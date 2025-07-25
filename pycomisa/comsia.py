@@ -1,13 +1,15 @@
-from src.DataLoader import DataLoader
-from src.MoleculeAligner import MoleculeAligner
-from src.MolecularGridCalculator import MolecularGridCalculator
-from src.MolecularFieldCalculator import MolecularFieldCalculator
-from src.MolecularVisualizer import MolecularVisualizer
-from src.PLSAnalysis import PLSAnalysis
-from src.ContourPlotVisualizer import ContourPlotVisualizer
+from pycomisa.src.DataLoader import DataLoader
+from pycomisa.src.MoleculeAligner import MoleculeAligner
+from pycomisa.src.MolecularGridCalculator import MolecularGridCalculator
+from pycomisa.src.MolecularFieldCalculator import MolecularFieldCalculator
+from pycomisa.src.MolecularVisualizer import MolecularVisualizer
+from pycomisa.src.PLSAnalysis import PLSAnalysis
+from pycomisa.src.ContourPlotVisualizer import ContourPlotVisualizer
 import os
 import argparse
-from datetime import datetime 
+from datetime import datetime
+
+
 data_loader = DataLoader()
 aligner = MoleculeAligner()
 field_calculator = MolecularFieldCalculator()
@@ -27,7 +29,7 @@ FIELD_OPTIONS = {
 }
 
 
-def main(input_file, sdf_activity, predict_file, grid_resolution, grid_padding, num_components, column_filter, visualization, fields):
+def run_comisa(input_file, sdf_activity, predict_file, grid_resolution, grid_padding, num_components, column_filter, visualization, fields):
     # Create the directory system for results
     current_time = datetime.now()
     directory_name = current_time.strftime("%Y-%m-%d_%H-%M-%S")
@@ -159,10 +161,13 @@ def create_parser():
 
     return parser
 
-if __name__ == "__main__":
+def main():
     parser = create_parser()
     args = parser.parse_args()
 
-    main(args.train_file, args.sdf_activity, args.predict_file,
-         args.grid_resolution, args.grid_padding, args.num_components, 
+    run_comisa(args.train_file, args.sdf_activity, args.predict_file,
+         args.grid_resolution, args.grid_padding, args.num_components,
          args.column_filter, not args.disable_visualization, args.fields)
+
+if __name__ == "__main__":
+    main()
