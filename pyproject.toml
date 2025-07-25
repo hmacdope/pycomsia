@@ -35,7 +35,7 @@ test = [
 ]
 
 [project.scripts]
-# pycomisa = "blah" # TODO: add CLI entry point
+pycomisa = "pycomisa.comsia:main"
 
 [tool.setuptools]
 # This subkey is a beta stage development and keys may change in the future, see https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html for more details

@@ -29,7 +29,7 @@ FIELD_OPTIONS = {
 }
 
 
-def main(input_file, sdf_activity, predict_file, grid_resolution, grid_padding, num_components, column_filter, visualization, fields):
+def run_comisa(input_file, sdf_activity, predict_file, grid_resolution, grid_padding, num_components, column_filter, visualization, fields):
     # Create the directory system for results
     current_time = datetime.now()
     directory_name = current_time.strftime("%Y-%m-%d_%H-%M-%S")
@@ -161,10 +161,13 @@ def create_parser():
 
     return parser
 
-if __name__ == "__main__":
+def main():
     parser = create_parser()
     args = parser.parse_args()
 
-    main(args.train_file, args.sdf_activity, args.predict_file,
-         args.grid_resolution, args.grid_padding, args.num_components, 
+    run_comisa(args.train_file, args.sdf_activity, args.predict_file,
+         args.grid_resolution, args.grid_padding, args.num_components,
          args.column_filter, not args.disable_visualization, args.fields)
+
+if __name__ == "__main__":
+    main()
