@@ -1,13 +1,15 @@
-from src.DataLoader import DataLoader
-from src.MoleculeAligner import MoleculeAligner
-from src.MolecularGridCalculator import MolecularGridCalculator
-from src.MolecularFieldCalculator import MolecularFieldCalculator
-from src.MolecularVisualizer import MolecularVisualizer
-from src.PLSAnalysis import PLSAnalysis
-from src.ContourPlotVisualizer import ContourPlotVisualizer
+from pycomisa.src.DataLoader import DataLoader
+from pycomisa.src.MoleculeAligner import MoleculeAligner
+from pycomisa.src.MolecularGridCalculator import MolecularGridCalculator
+from pycomisa.src.MolecularFieldCalculator import MolecularFieldCalculator
+from pycomisa.src.MolecularVisualizer import MolecularVisualizer
+from pycomisa.src.PLSAnalysis import PLSAnalysis
+from pycomisa.src.ContourPlotVisualizer import ContourPlotVisualizer
 import os
 import argparse
-from datetime import datetime 
+from datetime import datetime
+
+
 data_loader = DataLoader()
 aligner = MoleculeAligner()
 field_calculator = MolecularFieldCalculator()
