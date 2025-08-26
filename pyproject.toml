@@ -36,7 +36,7 @@ test = [
 ]
 
 [project.scripts]
-pycomisa = "pycomisa.comsia:main"
+pycomsia = "pycomsia.comsia:main"
 
 [tool.setuptools]
 # This subkey is a beta stage development and keys may change in the future, see https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html for more details
@@ -64,7 +64,7 @@ namespaces = true
 where = ["."]
 
 [tool.setuptools.package-data]
-"pycomisa.tests" = ["**"]
+"pycomsia.tests" = ["**"]
 
 
 
