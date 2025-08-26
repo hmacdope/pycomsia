@@ -5,7 +5,7 @@ import pandas as pd
 from rdkit import Chem
 from unittest.mock import patch, MagicMock
 
-from pycomisa.src.DataLoader import DataLoader
+from pycomsia.src.DataLoader import DataLoader
 
 
 @pytest.fixture

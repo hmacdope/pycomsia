@@ -3,7 +3,7 @@ import pytest
 
 from rdkit import Chem
 
-from pycomisa.src.MoleculeAligner import MoleculeAligner
+from pycomsia.src.MoleculeAligner import MoleculeAligner
 
 
 @pytest.fixture

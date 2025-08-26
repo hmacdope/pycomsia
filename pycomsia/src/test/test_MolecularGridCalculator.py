@@ -4,7 +4,7 @@ import pytest
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
-from pycomisa.src.MolecularGridCalculator import MolecularGridCalculator
+from pycomsia.src.MolecularGridCalculator import MolecularGridCalculator
 
 @pytest.fixture
 def molecular_grid_calculator():

@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 from unittest.mock import MagicMock, patch
 
-from pycomisa.src.ContourPlotVisualizer import ContourPlotVisualizer
+from pycomsia.src.ContourPlotVisualizer import ContourPlotVisualizer
 
 
 @pytest.fixture

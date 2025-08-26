@@ -6,7 +6,7 @@ from unittest.mock import patch, MagicMock
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
-from pycomisa.src.MolecularFieldCalculator import MolecularFieldCalculator
+from pycomsia.src.MolecularFieldCalculator import MolecularFieldCalculator
 
 
 

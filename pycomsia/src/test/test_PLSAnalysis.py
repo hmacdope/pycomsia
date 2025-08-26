@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 plt.switch_backend('Agg')  # Prevent GUI issues in test environment
 
-from pycomisa.src.PLSAnalysis import PLSAnalysis
+from pycomsia.src.PLSAnalysis import PLSAnalysis
 
 
 @pytest.fixture

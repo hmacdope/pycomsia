@@ -7,7 +7,7 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from unittest import mock
 
-from pycomisa.src.MolecularVisualizer import MolecularVisualizer
+from pycomsia.src.MolecularVisualizer import MolecularVisualizer
 
 
 @pytest.fixture
