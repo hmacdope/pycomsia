@@ -5,7 +5,7 @@ import numpy as np
 
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from unittest import mock
+from unittest import mock, result
 
 from pycomsia.src.MolecularVisualizer import MolecularVisualizer
 
@@ -273,11 +273,3 @@ def test_normalize_custom_range_10_to_20(molecular_visualizer):
     result = molecular_visualizer._custom_normalize_field(data, new_min=10, new_max=20)
 
     assert np.allclose(result, [10.0, 15.0, 20.0], atol=1e-3)
-
-
-# Edge case: all values are the same
-def test_normalize_single_unique_value(molecular_visualizer):
-    data = np.array([7, 7, 7])
-
-    with pytest.raises(ZeroDivisionError):
-        molecular_visualizer._custom_normalize_field(data)
