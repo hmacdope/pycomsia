@@ -1,3 +1,5 @@
+from unittest import result
+
 import pytest
 import numpy as np
 from unittest.mock import MagicMock, patch
@@ -10,19 +12,33 @@ def contour_visualizer():
     return ContourPlotVisualizer()
 
 
-def test_calculate_significant_ranges_basic(contour_visualizer):
-    data = {
-        'field1': np.array([[1, 2, 3], [4, 5, 6]]),
-        'field2': np.array([[10, 20, 30], [40, 50, 60]])
+def test_calculate_significant_ranges(contour_visualizer):
+    # Input data: dictionary of numpy arrays
+    reconstructed_coeffs = {
+        'field1': np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),  # 9 values total
+        'field2': np.array([[10, 20], [30, 40]])  # 4 values total
     }
 
-    result = contour_visualizer.calculate_significant_ranges(data, top_percent=10, bottom_percent=10)
+    # Using top_percent=50, bottom_percent=50
+    result = contour_visualizer.calculate_significant_ranges(reconstructed_coeffs, top_percent=50, bottom_percent=50)
 
-    # Only 10% of 6 elements => 0.6 => 0 (int cast)
-    assert result['field1']['low'] == (None, None)
-    assert result['field1']['high'] == (None, None)
-    assert result['field2']['low'] == (None, None)
-    assert result['field2']['high'] == (None, None)
+    # Expected low: bottom 50% = lowest 50% values
+    # Expected high: top 50% = highest 50% values
+    expected = {
+        'field1': {
+            'low': (1, 4),   # bottom 50% of 9: 4 values -> [1, 2, 3, 4]
+            'high': (5, 9),  # top 50% of 9: 4 values -> [5, 6, 7, 8, 9] -> from index 4
+        },
+        'field2': {
+            'low': (10, 20),  # bottom 50% of 4: 2 values -> [10, 20]
+            'high': (30, 40), # top 50% of 4: 2 values -> [30, 40]
+        }
+    }
+
+    # Validate results
+    for field in expected:
+        assert result[field]['low'] == expected[field]['low'], f"Low range mismatch for {field}"
+        assert result[field]['high'] == expected[field]['high'], f"High range mismatch for {field}"
 
 
 def test_calculate_significant_ranges_50_percent(contour_visualizer):

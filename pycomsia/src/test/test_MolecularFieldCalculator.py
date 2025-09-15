@@ -219,10 +219,6 @@ def test_hybridization_vectors_other(other_hybrid_atom, molecular_field_calculat
         assert np.isclose(np.linalg.norm(vec), 1.0)
 
 
-# === Fixture ===
-
-
-
 # === Tests ===
 
 def test_filter_positions_donor(ethanol_molecule, molecular_field_calculator):
